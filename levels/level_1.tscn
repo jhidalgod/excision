@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b5uc1njhite1o"]
+
+[ext_resource type="Script" uid="uid://cgv41y43jhr3b" path="res://levels/level_1.gd" id="1_bt44k"]
+[ext_resource type="Script" uid="uid://w7abfocop537" path="res://levels/path.gd" id="2_bt44k"]
+[ext_resource type="PackedScene" uid="uid://c7islwqhdevhp" path="res://turrets/turret.tscn" id="3_n46q3"]
+
+[sub_resource type="Curve2D" id="Curve2D_gywyn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 360, 0, 0, 0, 0, 243, 360, 0, 0, 0, 0, 243, 147, 0, 0, 0, 0, 503, 147, 0, 0, 0, 0, 503, 646, 0, 0, 0, 0, 787, 646, 0, 0, 0, 0, 787, 148, 0, 0, 0, 0, 999, 148, 0, 0, 0, 0, 999, 646, 0, 0, 0, 0, 1165, 646, 0, 0, 0, 0, 1165, 360, 0, 0, 0, 0, 1180, 360)
+}
+point_count = 12
+
+[node name="Level1" type="Node2D" unique_id=1594492568]
+script = ExtResource("1_bt44k")
+
+[node name="Background" type="ColorRect" parent="." unique_id=813075077]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.11764706, 0.14509805, 0.1882353, 1)
+
+[node name="Paths" type="Node2D" parent="." unique_id=194415781]
+
+[node name="Path1" type="Path2D" parent="Paths" unique_id=539590734]
+curve = SubResource("Curve2D_gywyn")
+script = ExtResource("2_bt44k")
+color = Color(0.2901961, 0.32156864, 0.36862746, 1)
+
+[node name="Turrets" type="Node2D" parent="." unique_id=807974761]
+
+[node name="Turret1" parent="Turrets" unique_id=1164978539 instance=ExtResource("3_n46q3")]
+position = Vector2(366, 209)
+
+[node name="Turret2" parent="Turrets" unique_id=1313108939 instance=ExtResource("3_n46q3")]
+position = Vector2(645, 578)
+
+[node name="Turret3" parent="Turrets" unique_id=122530496 instance=ExtResource("3_n46q3")]
+position = Vector2(918, 262)
+
+[node name="Units" type="Node2D" parent="." unique_id=1510967121]
+
+[node name="Core" type="Node2D" parent="." unique_id=679243174]
+position = Vector2(1180, 360)
+
+[node name="ColorRect" type="ColorRect" parent="Core" unique_id=794268989]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.9490196, 0.54901963, 0.15686275, 1)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=766932721]
+
+[node name="UnitsBar" type="HBoxContainer" parent="HUD" unique_id=1536261144]
+custom_minimum_size = Vector2(0, 70)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="EnergyLabel" type="Label" parent="HUD/UnitsBar" unique_id=1229623270]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Energy: 10"
+vertical_alignment = 1
+
+[node name="RobotButton" type="Button" parent="HUD/UnitsBar" unique_id=130320500]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+text = "Robot (2⚡)"
+
+[node name="Spacer" type="Control" parent="HUD/UnitsBar" unique_id=1449948367]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="HUD/UnitsBar" unique_id=742180370]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+text = "Main menu"

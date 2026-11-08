@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c7islwqhdevhp"]
+
+[ext_resource type="Script" uid="uid://b83l4c88h6q4w" path="res://turrets/turret.gd" id="1_amdcu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gywyn"]
+
+[node name="Turret" type="Area2D" unique_id=1164978539]
+script = ExtResource("1_amdcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=378821263]
+shape = SubResource("CircleShape2D_gywyn")
